@@ -1,5 +1,9 @@
 function validarCamposObligatorios(){
-    var bandera = true
+    var bandera = false
+    var bvalidacion = true
+    var bcedula = true
+    var bcorreo = true
+    var bfecha = true
     
     for(var i = 0; i < document.forms[0].elements.length; i++){
         var elemento = document.forms[0].elements[i]
@@ -21,8 +25,12 @@ function validarCamposObligatorios(){
             } else if (elemento.id == 'contrasena') {
                 document.getElementById('mensajeContrasena').innerHTML = '<br>El campo de la contrasenia esta vacia'
             }
-            elemento.style.border = "1px red solid"
-            banderav = false
+            elemento.style.border = "3px red solid"
+            bvalidacion = false
+        }
+
+        if (elemento.id == "cedula"){
+
         }
 
     }
