@@ -1,9 +1,9 @@
 function validarCamposObligatorios() {
     var bandera = false
-    var banderav = true
-    var banderac = false
-    var banderae = false
-    var banderaf = false
+    var bvalidacion = true
+    var bcedula = false
+    var bcorreo = false
+    var bfecha = false
     for (var i = 0; i < document.forms[0].elements.length - 2; i++) {
         var elemento = document.forms[0].elements[i]
         if (elemento.value == '' && (elemento.type == 'text' || elemento.type == 'password')) {
@@ -25,31 +25,31 @@ function validarCamposObligatorios() {
                 document.getElementById('mensajeContrasena').innerHTML = '<br>La contraseña esta vacía'
             }
             elemento.style.border = "1px red solid"
-            banderav = false
+            bvalidacion = false
         }
         if (elemento.id == 'cedula') {
             if (valCedula(elemento.id) == true) {
-                banderac = true
+                bcedula = true
             } else {
                 elemento.style.border = "1px red solid"
             }
         }
         if (elemento.id == 'correo') {
             if (valCorreo(elemento.id) == true) {
-                banderae = true
+                bcorreo = true
             } else {
                 elemento.style.border = "1px red solid"
             }
         }
         if (elemento.id == 'fechaNacimiento') {
             if (valFecha(elemento.id) == true) {
-                banderaf = true
+                bfecha = true
             } else {
                 elemento.style.border = "1px red solid"
             }
         }
     }
-    if (banderav == true && banderac == true && banderae == true && banderaf == true) {
+    if (bvalidacion == true && bcedula == true && bcorreo == true && bfecha == true) {
         bandera = true
     }
     console.log(bandera)
