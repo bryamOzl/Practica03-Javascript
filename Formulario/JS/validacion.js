@@ -28,21 +28,21 @@ function validarCamposObligatorios() {
             bvalidacion = false
         }
         if (elemento.id == 'cedula') {
-            if (valCedula(elemento.id) == true) {
+            if (validarCedula(elemento.id) == true) {
                 bcedula = true
             } else {
                 elemento.style.border = "1px red solid"
             }
         }
         if (elemento.id == 'correo') {
-            if (valCorreo(elemento.id) == true) {
+            if (validarCorreo(elemento.id) == true) {
                 bcorreo = true
             } else {
                 elemento.style.border = "1px red solid"
             }
         }
         if (elemento.id == 'fechaNacimiento') {
-            if (valFecha(elemento.id) == true) {
+            if (validarFecha(elemento.id) == true) {
                 bfecha = true
             } else {
                 elemento.style.border = "1px red solid"
@@ -83,9 +83,9 @@ function validarLetras(datos) {
     }
 }
 
-function valFecha(valor) {
+function validarFecha(valor) {
     var fecha = document.getElementById(valor).value
-    if (fecha.length == 10 && fecha !== '') {
+    if (fecha.length == 11 && fecha !== '') {
         var dia = fecha.substr(0, 2)
         var mes = fecha.substr(3, 2)
         var año = fecha.substr(6, 4)

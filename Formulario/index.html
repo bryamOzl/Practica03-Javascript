@@ -8,8 +8,7 @@
 </head>
 
 <body>
-    <form id="formulario01" method="POST" action="saludo.php" 
-    onsubmit="return validarCamposObligatorios()">
+    <form id="formulario01" method="POST" action="Bienvenido.php" onsubmit="return validarCamposObligatorios()">
         
         <label for="cedula">Cedula(*)</label>
         <input type="text" id="cedula" name="cedula" value="" placeholder="Ingrese el número de cedula... " />
@@ -40,7 +39,7 @@
         <br>
 
         <label for="fecha">Fecha Nacimiento (*)</label>
-        <input type="date" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese su fecha de nacimiento ..." />
+        <input type="text" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese su fecha de nacimiento ..." />
         <span id="mensajeFechaNacimiento" class="error"></span>
         <br>
 
