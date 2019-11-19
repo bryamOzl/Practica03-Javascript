@@ -24,7 +24,7 @@ function validarCedula() {
         }
 
     } else {
-        document.getElementById("mensajeCedula").innerHTML = 'La cedula se esta typiando';
+        document.getElementById("mensajeCedula").innerHTML = 'La cedula incorrecta';
     }
 }
 
@@ -173,13 +173,5 @@ function validarTodo() {
         capa.style.border = "4px outset  red";
         bandera = false;
     }
-    // if (!document.getElementById('mensajeContrasena')) {
-    //     var capa = document.getElementById('contrasena');
-    //     capa.style.border = "4px outset  red";
-    //     bandera = false;
-    // }
-
     return bandera;
-
-    
 }
