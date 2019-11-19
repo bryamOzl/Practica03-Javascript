@@ -85,7 +85,7 @@ function validarLetras(datos) {
 
 function validarFecha(valor) {
     var fecha = document.getElementById(valor).value
-    if (fecha.length == 11 && fecha !== '') {
+    if (fecha.length == 10 && fecha !== '') {
         var dia = fecha.substr(0, 2)
         var mes = fecha.substr(3, 2)
         var año = fecha.substr(6, 4)
