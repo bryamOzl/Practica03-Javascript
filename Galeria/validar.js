@@ -21,3 +21,9 @@ function inicio() {
     imprimir();
 }
 
+function siguiente() {
+    pActual++;
+    verificar();
+    imprimir();
+}
+
