@@ -127,7 +127,7 @@ function valFecha(valor) {
         if (s1 == '/' && s2 == '/') {
             vals = true
         } else {
-            document.getElementById('mensajeFechaNacimiento').innerHTML = '<br> El formato de fecha es incorrecto'
+            document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha incorrecta'
             valg = false
         }
         if (parseInt(año) < añoActual) {
@@ -139,10 +139,10 @@ function valFecha(valor) {
                 document.getElementById('mensajeFechaNacimiento').innerHTML = ''
             } else {
                 if (vals == false) {
-                    document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>El formato de fecha es incorrecto'
+                    document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha Incorrecta'
                     valg = false
                 } else {
-                    document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>La fecha es incorrecta'
+                    document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha Incorrecta'
                     valg = false
                 }
             }
@@ -155,13 +155,13 @@ function valFecha(valor) {
             valg = false
         }
     } else {
-        document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>La fecha es incorrecta o está vacía'
+        document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha Incorrecta'
         valg = false
     }
     return valg;
 }
 
-function valNumeros(datos) {
+function validarNumeros(datos) {
     var nums = document.getElementById(datos.id).value
     if (datos.id == 'telefono') {
         document.getElementById('mensajeTelefono').innerHTML = ''
@@ -169,7 +169,7 @@ function valNumeros(datos) {
         if (n >= 48 && n <= 57) {
             if (nums.length > 10) {
                 datos.style.border = "1px red solid"
-                document.getElementById('mensajeTelefono').innerHTML = '<br>Número de teléfono incorrecto'
+                document.getElementById('mensajeTelefono').innerHTML = '<br>Telefono Incorrecto'
             }
         } else {
             document.getElementById('telefono').value = nums.substr(0, nums.length - 1)
@@ -177,7 +177,7 @@ function valNumeros(datos) {
     }
 }
 
-function valCedula(valor) {
+function validarCedula(valor) {
     var ced = document.getElementById(valor).value.trim()
     var bandera = true;
     var valp = false
@@ -230,7 +230,7 @@ function valCedula(valor) {
     return bandera;
 }
 
-function valCorreo(valor) {
+function validarCorreo(valor) {
     var correo = document.getElementById(valor).value.trim()
     bandera = true
     var lon = correo.length
