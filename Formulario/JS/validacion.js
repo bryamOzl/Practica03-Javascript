@@ -185,7 +185,7 @@ function validarCedula(valor) {
     var valud = false
     var total = 0
     if (ced.length != 10 || ced.value == '') {
-        document.getElementById('mensajeCedula').innerHTML = '<br>Número de cédula vacío, incompleto o excedido'
+        document.getElementById('mensajeCedula').innerHTML = '<br>Número de cedula incorrecta'
         bandera = false;
     } else {
         document.getElementById('mensajeCedula').innerHTML = ''

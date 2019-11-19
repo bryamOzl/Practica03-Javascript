@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +7,7 @@
 </head>
 
 <body>
-    <h2> Bienvenido, pasaste las validaciones <?php echo $_POST["nombres"] ?></h2>
+    <h2> Bienvenido, pasaste las validaciones </h2>
 </body>
 
 </html>
