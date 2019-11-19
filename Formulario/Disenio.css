@@ -1,0 +1,39 @@
+body { 
+    padding: 10% 30% 10% 2 0%;
+    background-color: rgb(13, 14, 13)
+  }
+  
+  input,select{
+    padding: 4px;
+    width: 240px;
+    max-width: 100%;
+    font-size:1.2em;
+    margin-bottom: 10px;
+  }
+  
+  label {
+    display: inline-block;
+    width: 45%;
+  }
+  
+  body, input {
+    font-family: sans-serif;
+  }
+  
+  
+  div{
+      width: max-content; height: 100%;
+      border: 10px double white;
+      margin: 0 auto;
+      background-color: rgb(164, 248, 9);
+      padding: 20px;
+  }
+  
+  
+  button{
+      padding: 6px;
+      width: 220px;
+      font-size:1.2em;
+      margin-left: 46%;
+      border-radius:5px 0 0 0;
+  }
