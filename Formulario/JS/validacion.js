@@ -21,9 +21,11 @@ function validarCamposObligatorios(){
             } else if (elemento.id == 'contrasena') {
                 document.getElementById('mensajeContrasena').innerHTML = '<br>El campo de la contrasenia esta vacia'
             }
-
+            elemento.style.border = "1px red solid"
+            banderav = false
         }
-    }    
+
+    }
 }
 
 function validarLetras(elemento)
