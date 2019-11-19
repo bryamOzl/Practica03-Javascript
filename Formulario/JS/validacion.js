@@ -269,20 +269,20 @@ function validarCorreo(valor) {
                 }
                 if (cont > 0) {
                     bandera = false;
-                    document.getElementById('mensajeCorreo').innerHTML = 'Caracteres no son alfanumericos'
+                    document.getElementById('mensajeCorreo').innerHTML = 'Caracteres Incorrectos'
                 }
             }
         } else {
             if (lon == 0) {
-                document.getElementById('mensajeCorreo').innerHTML = '<br>El correo esta vacío'
+                document.getElementById('mensajeCorreo').innerHTML = '<br>El campo correo esat vacio'
             } else {
-                document.getElementById('mensajeCorreo').innerHTML = '<br>Fuera Requisitos - Tener 3 caracteres alfanumericos como minimo y finalizar(@est.ups.edu.ec / @ups.edu.ec)'
+                document.getElementById('mensajeCorreo').innerHTML = '<br>Correo incorrecto y finalizar(@est.ups.edu.ec / @ups.edu.ec)'
                 bandera = false
             }
         }
     } else {
         bandera = false;
-        document.getElementById('mensajeCorreo').innerHTML = '<br> El correo excede el tamaño establecido'
+        document.getElementById('mensajeCorreo').innerHTML = '<br> Correo incorrecto'
     }
     return bandera;
 }
