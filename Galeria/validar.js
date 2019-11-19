@@ -33,3 +33,17 @@ function imprimir() {
     window.document.getElementById("imagen").innerHTML = texto;
 }
 
+function verificar() {
+    if (pActual == 4) {
+        window.document.getElementById("siguiente").disabled = true;
+        window.document.getElementById("anterior").disabled = false;
+    }
+    else if (pActual == 0) {
+        window.document.getElementById("anterior").disabled = true;
+        window.document.getElementById("siguiente").disabled = false;
+    } else {
+        window.document.getElementById("siguiente").disabled = false;
+        window.document.getElementById("anterior").disabled = false;
+    }
+}
+
