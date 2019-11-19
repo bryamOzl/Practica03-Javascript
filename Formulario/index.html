@@ -17,7 +17,7 @@
 
 <body>
     <div>
-    <form id="formulario01" method="POST" action="Bienvenido.php" onsubmit="return validarTodo()">
+    <form id="formulario01" method="POST" action="pasa.php" onsubmit="return validarTodo()">
         
         <fieldset>
         <legend>Creacion de usuarios</legend>
@@ -26,45 +26,37 @@
         onkeyup="validarCedula(event)"/>
         <span id="mensajeCedula" class="error" ></span>
         <br>
-
         <label for="nombres">Nombres (*)</label>
         <input type="text" id="nombres" name="nombres" value="" placeholder="Ingrese sus dos nombres..."onkeypress="return soloLetras(event)"
         onkeyup="dosNombres(this.value, 'mensajeNombres')"/>
         <span id="mensajeNombres" class="error" ></span>
         <br>
-
         <label for="apellidos">Apellidos (*)</label>
         <input type="text" id="apellidos" name="apellidos" value="" placeholder="Ingrese sus dos apellidos..." onkeydown="return soloLetras(event)""
         onkeyup="dosNombres(this.value, 'mensajeApellidos')"/>
         <span id="mensajeApellidos"> </span>
         <br>
-
         <label for="direccion">Dirección (*)</label>
         <input type="text" id="direccion" name="direccion" value="" placeholder="Ingrese su dirección ..." />
         <span id="mensajeDireccion"> </span>
         <br>
-
         <label for="telefono">Teléfono (*)</label>
         <input type="text" id="telefono" name="telefono" value="" placeholder="Ingrese su número telefónico..." maxlength="10" onkeydown="return soloNumeros(event, this.value)" onkeyup="return numeroTelefono(this.event)"/>
         <span id="mensajeTelefono"> </span>
         <br>
-
         <label for="fecha">Fecha Nacimiento (*)</label>
         <input type="text" id="fechaNacimiento" name="fechaNacimiento" value="" placeholder="Ingrese dd/mm/aaaa ..." maxlength="10"
          onKeyUp="fecha();"/>
         <span id="mensajeFecha"></span>
         <br>
-
         <label for="correo">Correo electrónico (*)</label>
         <input type="text" id="correo" name="correo" value="" placeholder="Ingrese su correo electrónico..." onkeyup="correoU(this.value)"/>
         <span id="mensajeCorreo"></span>
         <br>
-
         <label for="correo">Contraseña (*)</label>
         <input type="password" id="contrasena" name="contrasena" value="" placeholder="Ingrese su contraseña ..."  />
         <span id="mensajeContrasena"></span>
         <br>
-
         <input type="submit" id="crear" name="crear" value="Aceptar" />
         <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
     
