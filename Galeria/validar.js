@@ -27,3 +27,9 @@ function siguiente() {
     imprimir();
 }
 
+function imprimir() {
+    console.log(imagenes);
+    var texto = "<img src=" + array[imagenes[pActual]].imagen + ">";
+    window.document.getElementById("imagen").innerHTML = texto;
+}
+
