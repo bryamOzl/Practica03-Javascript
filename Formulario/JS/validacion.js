@@ -64,7 +64,7 @@ function validarLetras(datos) {
             nom = na.split(" ").length
             if (nom > 2) {
                 datos.style.border = "1px red solid"
-                document.getElementById('mensajeNombres').innerHTML = '<br>Solo se permiten dos nombres'
+                document.getElementById('mensajeNombres').innerHTML = '<br>Nombres demasiado largos'
             }
         } else {
             document.getElementById('nombres').value = na.substr(0, na.length - 1)
@@ -75,7 +75,7 @@ function validarLetras(datos) {
             ape = na.split(" ").length
             if (ape > 2) {
                 datos.style.border = "1px red solid"
-                document.getElementById('mensajeApellidos').innerHTML = '<br>Solo se permiten dos apellidos'
+                document.getElementById('mensajeApellidos').innerHTML = '<br>Apellidos demasiado largos'
             }
         } else {
             document.getElementById('apellidos').value = na.substr(0, na.length - 1)
