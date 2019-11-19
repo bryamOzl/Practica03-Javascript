@@ -1,288 +1,177 @@
+function validarCedula() {
+    var cad = document.getElementById("cedula").value;
+    var total = 0;
+    var longitud = cad.length;
+    if (cad !== "" && longitud === 10) {
+        for (i = 0; i < longitud - 1; i++) {
+            //verifica los salto pares para la validacion
+            if (i % 2 === 0) {
+                var aux = cad.charAt(i) * 2;
+                if (aux > 9) aux -= 9;
+                total += aux;
+            } else {
+                total += parseInt(cad.charAt(i)); 
+                //parsea o concatanara la cadena
+            }
+        }
+        total = total % 10 ? 10 - total % 10 : 0;
+        var aux = cad.charAt(9);
+        if (cad.charAt(9) == total) {
+            //si se cumple la validacion muestra esto
+            document.getElementById("mensajeCedula").innerText = 'La cedula es correcta';
+        } else {
+            document.getElementById("mensajeCedula").innerHTML = 'La cedula es incorrecta';
+        }
+
+    } else {
+        document.getElementById("mensajeCedula").innerHTML = 'La cedula se esta typiando';
+    }
+}
+
+function soloNumeros(e, c) {
+    var key = window.Event ? e.which : e.keyCode
+    return ((key >= 48) && (key <= 57) && (c.length + 1 <= 10) || (key == 8))
+}
+
+function soloLetras(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+    especiales = "8-37-39-46";
+
+    tecla_especial = false
+    for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+    if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+        return false;
+    }
+}
+
+function dosNombres(txt, id) {
+    palabras = txt.split(' ');
+    if (palabras.length == 2) {
+        p1 = palabras[0].trim();
+        p2 = palabras[1].trim();
+        if (p1 != '' && p2.length >= 2) {
+            document.getElementById(id).innerHTML=('cumple');
+        } else {
+            document.getElementById(id).innerHTML=('no cumple');
+        }
+    } else {
+        document.getElementById(id).innerHTML=('no cumple');
+    }
+}
+
+function numeroTelefono(e) {
+    var keynum = window.event ? window.event.keyCode : e.which;
+    if ((keynum < 48) || (keynum >57)) {
+		document.getElementById("mensajeTelefono").innerHTML = ("Ingrese solo numeros ");
+		return true;
+		
+	}
+}
+
+function fecha(){
+	var Fecha = document.getElementById('fechaNacimiento').value;
+    var Mensaje = '';
+    document.getElementById('mensajeFecha').className = '';
+    if (Fecha.length == 10 ){
+        fe =Fecha.split('/');
+        var Anio = fe[2];
+        var Mes = fe[1] - 1;
+        var Dia = fe[0];
+        var VFecha = new Date(Anio, Mes, Dia);
+        if ((VFecha.getFullYear() == Anio) && (VFecha.getMonth() == Mes) && (VFecha.getDate() == Dia)) {
+            Mensaje = 'Fecha correcta';
+            document.getElementById('mensajeFecha').innerHTML = 'Fecha correcta';
+        }
+        else {
+            Mensaje = 'Fecha incorrecta';
+            document.getElementById('mensajeFecha').innerText = 'Fecha incorrecta';
+        }
+    }
+    document.getElementById('mensajeFecha').innerHTML = Mensaje;
+}
+
+function correoU(txt) {
+    f = txt.split('@');
+    if (f.length >= 2) {
+        if (f[0].length >= 1) {
+            if (f[1] == 'ups.edu.ec' || f[1] == 'est.ups.edu.ec') {
+                document.getElementById("mensajeCorreo").innerHTML = 'Correo correcto';
+            } else {
+                document.getElementById("mensajeCorreo").innerHTML = 'Correo erroneo';
+            }
+        } else {
+            document.getElementById("mensajeCorreo").innerHTML = 'Correo erroneo';
+        }
+    } else {
+        document.getElementById("mensajeCorreo").innerHTML = 'Correo erroneo';
+    }
+}
+
+
+
 function validarCamposObligatorios() {
-    var bandera = false
-    var bvalidacion = true
-    var bcedula = false
-    var bcorreo = false
-    var bfecha = false
-    for (var i = 0; i < document.forms[0].elements.length - 2; i++) {
+    // arreglos
+    var bandera = true
+    for (var i = 0; i < document.forms[0].elements.length; i++) {
         var elemento = document.forms[0].elements[i]
-        if (elemento.value == '' && (elemento.type == 'text' || elemento.type == 'password')) {
+        if (elemento.value == '' && elemento.type == 'text') {
             if (elemento.id == 'cedula') {
-                document.getElementById('mensajeCedula').innerHTML = '<br>El campo cedula esta vacio'
-            } else if (elemento.id == 'nombres') {
-                document.getElementById('mensajeNombres').innerHTML = '<br>El campo nombres estan vacio'
-            } else if (elemento.id == 'apellidos') {
-                document.getElementById('mensajeApellidos').innerHTML = '<br>El campo apellidos estan vacio'
-            } else if (elemento.id == 'direccion') {
-                document.getElementById('mensajeDireccion').innerHTML = '<br>El campo dirección esta vacio'
-            } else if (elemento.id == 'telefono') {
-                document.getElementById('mensajeTelefono').innerHTML = '<br>El campo telefono está vacio'
-            } else if (elemento.id == 'fechaNacimiento') {
-                document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>El campo fecha de nacimiento esta vacio'
-            } else if (elemento.id == 'correo') {
-                document.getElementById('mensajeCorreo').innerHTML = '<br>El campo correo esta vacio'
-            } else if (elemento.id == 'contrasena') {
-                document.getElementById('mensajeContrasena').innerHTML = '<br>LaEl campo contraseña esta vacio'
+                document.getElementById('mensajeCedula').innerHTML = '<br> La cedula no esta ingresada'
             }
-            elemento.style.border = "1px red solid"
-            bvalidacion = false
-        }
-        if (elemento.id == 'cedula') {
-            if (validarCedula(elemento.id) == true) {
-                bcedula = true
-            } else {
-                elemento.style.border = "1px red solid"
-            }
-        }
-        if (elemento.id == 'correo') {
-            if (validarCorreo(elemento.id) == true) {
-                bcorreo = true
-            } else {
-                elemento.style.border = "1px red solid"
-            }
-        }
-        if (elemento.id == 'fechaNacimiento') {
-            if (validarFecha(elemento.id) == true) {
-                bfecha = true
-            } else {
-                elemento.style.border = "1px red solid"
-            }
+            elemento.style.border = '1px red solid'
+            bandera = false
         }
     }
-    if (bvalidacion == true && bcedula == true && bcorreo == true && bfecha == true) {
-        bandera = true
+    if (!bandera) {
+        alert('ahora si mete el dedo')
     }
-    console.log(bandera)
     return bandera
 }
 
-function validarLetras(datos) {
-    var na = document.getElementById(datos.id).value
-    if (datos.id == 'nombres') {
-        var n = na.substr(na.length - 1).charCodeAt(0)
-        if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122) || n == 32 || n == 225 || n == 233 || n == 237 || n == 243 || n == 250 || n == 193 || n == 201 || n == 205 || n == 211 || n == 218) {
-            nom = na.split(" ").length
-            if (nom > 2) {
-                datos.style.border = "1px red solid"
-                document.getElementById('mensajeNombres').innerHTML = '<br>Nombres demasiado largos'
-            }
-        } else {
-            document.getElementById('nombres').value = na.substr(0, na.length - 1)
-        }
-    } else if (datos.id == 'apellidos') {
-        var n = na.substr(na.length - 1).charCodeAt(0)
-        if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122) || n == 32 || n == 225 || n == 233 || n == 237 || n == 243 || n == 250 || n == 193 || n == 201 || n == 205 || n == 211 || n == 218) {
-            ape = na.split(" ").length
-            if (ape > 2) {
-                datos.style.border = "1px red solid"
-                document.getElementById('mensajeApellidos').innerHTML = '<br>Apellidos demasiado largos'
-            }
-        } else {
-            document.getElementById('apellidos').value = na.substr(0, na.length - 1)
-        }
-    }
-}
-
-function validarFecha(valor) {
-    var fecha = document.getElementById(valor).value
-    if (fecha.length == 10 && fecha !== '') {
-        var dia = fecha.substr(0, 2)
-        var mes = fecha.substr(3, 2)
-        var año = fecha.substr(6, 4)
-        var s1 = fecha.substr(2, 1)
-        var s2 = fecha.substr(5, 1)
-        var val1 = false
-        var val2 = false
-        var val3 = false
-        var val4 = false
-        var vals = false
-        var valg = true
-        añov = parseInt(año)
-        diav = parseInt(dia)
-
-        if (mes == '01' || mes == '03' || mes == '05' || mes == '07' || mes == '08' || mes == '10' || mes == '12') {
-            diav = parseInt(dia)
-            if (diav >= 1 && diav <= 31) {
-                val1 = true;
-            }
-        } else if (mes == '02') {
-            if (añov % 4 == 0) {
-                if (diav >= 1 && diav <= 29) {
-                    val2 = true;
-                }
-            } else {
-                if (diav >= 1 && diav <= 28) {
-                    val3 = true;
-                }
-            }
-        } else if (mes == '04' || mes == '06' || mes == '09' || mes == '11') {
-            if (diav >= 1 && diav <= 30) {
-                val4 = true;
-            }
-        }
-        var fechaActual = new Date();
-        var diaActual = fechaActual.getDate()
-        var mesActual = fechaActual.getMonth() + 1
-        var añoActual = fechaActual.getFullYear()
-        if (s1 == '/' && s2 == '/') {
-            vals = true
-        } else {
-            document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha incorrecta'
-            valg = false
-        }
-        if (parseInt(año) < añoActual) {
-            if ((val1 == true || val2 == true || val3 == true || val4 == true) && vals == true) {
-                document.getElementById('mensajeFechaNacimiento').innerHTML = ''
-            }
-        } else if (parseInt(año) == añoActual) {
-            if ((val1 == true || val2 == true || val3 == true || val4 == true) && vals == true && parseInt(mes) <= mesActual && parseInt(dia) <= diaActual) {
-                document.getElementById('mensajeFechaNacimiento').innerHTML = ''
-            } else {
-                if (vals == false) {
-                    document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha Incorrecta'
-                    valg = false
-                } else {
-                    document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha Incorrecta'
-                    valg = false
-                }
-            }
-        } else {
-            document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>El año es incorrecto'
-            valg = false;
-        }
-        if (val1 == false && val2 == false && val3 == false && val4 == false) {
-            document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>La fecha es incorrecta'
-            valg = false
-        }
-    } else {
-        document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>Fecha Incorrecta'
-        valg = false
-    }
-    return valg;
-}
-
-function validarNumeros(datos) {
-    var nums = document.getElementById(datos.id).value
-    if (datos.id == 'telefono') {
-        document.getElementById('mensajeTelefono').innerHTML = ''
-        var n = nums.substr(nums.length - 1).charCodeAt(0)
-        if (n >= 48 && n <= 57) {
-            if (nums.length > 10) {
-                datos.style.border = "1px red solid"
-                document.getElementById('mensajeTelefono').innerHTML = '<br>Telefono Incorrecto'
-            }
-        } else {
-            document.getElementById('telefono').value = nums.substr(0, nums.length - 1)
-        }
-    }
-}
-
-function validarCedula(valor) {
-    var ced = document.getElementById(valor).value.trim()
+function validarTodo() {
     var bandera = true;
-    var valp = false
-    var valtd = false
-    var valud = false
-    var total = 0
-    if (ced.length != 10 || ced.value == '') {
-        document.getElementById('mensajeCedula').innerHTML = '<br>Número de cedula incorrecta'
+    if (!document.getElementById('mensajeCedula')) {
+        var capa = document.getElementById('cedula');
+        capa.style.border = "4px outset  red";
         bandera = false;
-    } else {
-        document.getElementById('mensajeCedula').innerHTML = ''
-        var prov = parseInt(ced.substr(0, 2))
-        if (prov >= 1 && prov <= 24) {
-            valp = true
-        } else {
-            bandera = false;
-            document.getElementById('mensajeCedula').innerHTML = '<br>No existe la provincia - 01 a 24'
-        }
-        var terd = parseInt(ced.substr(2, 1))
-        if (terd >= 0 && terd <= 5) {
-            valtd = true
-        } else {
-            bandera = false;
-            document.getElementById('mensajeCedula').innerHTML = '<br>Tercer Digito Incorrecto - 0 a 5'
-        }
-        var lon = ced.length
-        for (var i = 0; i < lon - 1; i++) {
-            if (i % 2 == 0) {
-                var digp = ced.charAt(i) * 2
-                if (digp > 9) digp -= 9
-                total += digp
-            } else {
-                total += parseInt(ced.charAt(i))
-            }
-        }
-        var ud = total % 10 ? 10 - total % 10 : 0;
-        if (ud == parseInt(ced.substr(lon - 1, 1))) {
-            valud = true
-        } else {
-            bandera = false;
-            document.getElementById('mensajeCedula').innerHTML = '<br>Último Digito Incorrecto'
-        }
-
-        if (valp == true && valtd == true && valud == true) {
-        } else if (valp == false && valtd == false) {
-            bandera = false;
-            document.getElementById('mensajeCedula').innerHTML = '<br>Provincia (01-24) y Tercer Digito (0-5) Incorrectos'
-        }
     }
-    return bandera;
-}
-
-function validarCorreo(valor) {
-    var correo = document.getElementById(valor).value.trim()
-    bandera = true
-    var lon = correo.length
-    var cm = '@ups.edu.ec'
-    var ce = '@est.ups.edu.ec'
-    var cont = 0
-    if (lon <= 70) {
-        var cm1 = correo.substr(lon - 11, lon - 1)
-        var ce1 = correo.substr(lon - 15, lon - 1)
-        if (cm1 == cm && lon >= 14) {
-            var us = correo.substr(0, lon - 11)
-            console.log(us)
-            for (var i = 0; i < us.length; i++) {
-                var n = us.substr(i).charCodeAt(0)
-                console.log(n)
-                if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122) || (n >= 48 && n <= 57)) {
-                    document.getElementById('mensajeCorreo').innerHTML = ''
-                } else {
-                    cont++;
-                }
-                if (cont > 0) {
-                    bandera = false;
-                    document.getElementById('mensajeCorreo').innerHTML = 'Caracteres no son alfanumericos'
-                }
-            }
-        } else if (ce1 == ce && lon >= 18) {
-            var us = correo.substr(0, lon - 15)
-            console.log(us)
-            for (var i = 0; i < us.length; i++) {
-                var n = us.substr(i).charCodeAt(0)
-                console.log(n)
-                if ((n >= 65 && n <= 90) || (n >= 97 && n <= 122) || (n >= 48 && n <= 57)) {
-                    document.getElementById('mensajeCorreo').innerHTML = ''
-                } else {
-                    cont++;
-                }
-                if (cont > 0) {
-                    bandera = false;
-                    document.getElementById('mensajeCorreo').innerHTML = 'Caracteres Incorrectos'
-                }
-            }
-        } else {
-            if (lon == 0) {
-                document.getElementById('mensajeCorreo').innerHTML = '<br>El campo correo esat vacio'
-            } else {
-                document.getElementById('mensajeCorreo').innerHTML = '<br>Correo incorrecto y finalizar(@est.ups.edu.ec / @ups.edu.ec)'
-                bandera = false
-            }
-        }
-    } else {
+   
+    if (!document.getElementById('mensajeNombres')) {
+        var capa = document.getElementById('nombres');
+        capa.style.border = "4px outset  red";
         bandera = false;
-        document.getElementById('mensajeCorreo').innerHTML = '<br> Correo incorrecto'
+    }
+    if (!document.getElementById('mensajeApellidos')) {
+        var capa = document.getElementById('apellidos');
+        capa.style.border = "4px outset  red";
+        bandera = false;
+    }
+    if (!document.getElementById('mensajeDireccion')) {
+        var capa = document.getElementById('direccion');
+        capa.style.border = "4px outset  red";
+        bandera = false;
+    }
+    if (!document.getElementById('mensajeTelefono')) {
+        var capa = document.getElementById('telefono');
+        capa.style.border = "4px outset  red";
+        bandera = false;
+    }
+    if (!document.getElementById('mensajeFecha')) {
+        var capa = document.getElementById('fechaNacimiento');
+        capa.style.border = "4px outset  red";
+        bandera = false;
+    }
+    if (!document.getElementById('mensajeCorreo')) {
+        var capa = document.getElementById('correo');
+        capa.style.border = "4px outset  red";
+        bandera = false;
     }
     return bandera;
 }
