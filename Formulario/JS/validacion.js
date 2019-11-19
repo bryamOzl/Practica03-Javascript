@@ -130,48 +130,7 @@ function validarCamposObligatorios() {
         }
     }
     if (!bandera) {
-        alert('ahora si mete el dedo')
+        alert('Existen campos vacios')
     }
     return bandera
-}
-
-function validarTodo() {
-    var bandera = true;
-    if (!document.getElementById('mensajeCedula')) {
-        var capa = document.getElementById('cedula');
-        capa.style.border = "4px outset  red";
-        bandera = false;
-    }
-   
-    if (!document.getElementById('mensajeNombres')) {
-        var capa = document.getElementById('nombres');
-        capa.style.border = "4px outset  red";
-        bandera = false;
-    }
-    if (!document.getElementById('mensajeApellidos')) {
-        var capa = document.getElementById('apellidos');
-        capa.style.border = "4px outset  red";
-        bandera = false;
-    }
-    if (!document.getElementById('mensajeDireccion')) {
-        var capa = document.getElementById('direccion');
-        capa.style.border = "4px outset  red";
-        bandera = false;
-    }
-    if (!document.getElementById('mensajeTelefono')) {
-        var capa = document.getElementById('telefono');
-        capa.style.border = "4px outset  red";
-        bandera = false;
-    }
-    if (!document.getElementById('mensajeFecha')) {
-        var capa = document.getElementById('fechaNacimiento');
-        capa.style.border = "4px outset  red";
-        bandera = false;
-    }
-    if (!document.getElementById('mensajeCorreo')) {
-        var capa = document.getElementById('correo');
-        capa.style.border = "4px outset  red";
-        bandera = false;
-    }
-    return bandera;
 }
