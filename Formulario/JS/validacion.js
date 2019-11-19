@@ -57,12 +57,12 @@ function dosNombres(txt, id) {
         p1 = palabras[0].trim();
         p2 = palabras[1].trim();
         if (p1 != '' && p2.length >= 2) {
-            document.getElementById(id).innerHTML=('cumple');
+            document.getElementById(id).innerHTML=('Requerimientos CUmplidos');
         } else {
-            document.getElementById(id).innerHTML=('no cumple');
+            document.getElementById(id).innerHTML=('Requerimientos no Cumplidos');
         }
     } else {
-        document.getElementById(id).innerHTML=('no cumple');
+        document.getElementById(id).innerHTML=('Requerimientos no Cumplidos');
     }
 }
 
@@ -102,15 +102,15 @@ function correoU(txt) {
     if (f.length >= 2) {
         if (f[0].length >= 1) {
             if (f[1] == 'ups.edu.ec' || f[1] == 'est.ups.edu.ec') {
-                document.getElementById("mensajeCorreo").innerHTML = 'Correo correcto';
+                document.getElementById("mensajeCorreo").innerHTML = 'El correo es correcto';
             } else {
-                document.getElementById("mensajeCorreo").innerHTML = 'Correo erroneo';
+                document.getElementById("mensajeCorreo").innerHTML = 'El correo es correcto';
             }
         } else {
-            document.getElementById("mensajeCorreo").innerHTML = 'Correo erroneo';
+            document.getElementById("mensajeCorreo").innerHTML = 'El correo no es correcto';
         }
     } else {
-        document.getElementById("mensajeCorreo").innerHTML = 'Correo erroneo';
+        document.getElementById("mensajeCorreo").innerHTML = 'El correo no es correcto';
     }
 }
 
