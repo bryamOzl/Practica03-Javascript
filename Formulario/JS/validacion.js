@@ -8,21 +8,21 @@ function validarCamposObligatorios() {
         var elemento = document.forms[0].elements[i]
         if (elemento.value == '' && (elemento.type == 'text' || elemento.type == 'password')) {
             if (elemento.id == 'cedula') {
-                document.getElementById('mensajeCedula').innerHTML = '<br>La cedula esta vacía'
+                document.getElementById('mensajeCedula').innerHTML = '<br>El campo cedula esta vacio'
             } else if (elemento.id == 'nombres') {
-                document.getElementById('mensajeNombres').innerHTML = '<br>Los nombres estan vacíos'
+                document.getElementById('mensajeNombres').innerHTML = '<br>El campo nombres estan vacio'
             } else if (elemento.id == 'apellidos') {
-                document.getElementById('mensajeApellidos').innerHTML = '<br>Los apellidos estan vacíos'
+                document.getElementById('mensajeApellidos').innerHTML = '<br>El campo apellidos estan vacio'
             } else if (elemento.id == 'direccion') {
-                document.getElementById('mensajeDireccion').innerHTML = '<br>La dirección esta vacía'
+                document.getElementById('mensajeDireccion').innerHTML = '<br>El campo dirección esta vacio'
             } else if (elemento.id == 'telefono') {
-                document.getElementById('mensajeTelefono').innerHTML = '<br>El telefono está vacío'
+                document.getElementById('mensajeTelefono').innerHTML = '<br>El campo telefono está vacio'
             } else if (elemento.id == 'fechaNacimiento') {
-                document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>La fecha de nacimiento esta vacía'
+                document.getElementById('mensajeFechaNacimiento').innerHTML = '<br>El campo fecha de nacimiento esta vacio'
             } else if (elemento.id == 'correo') {
-                document.getElementById('mensajeCorreo').innerHTML = '<br>El correo esta vacío'
+                document.getElementById('mensajeCorreo').innerHTML = '<br>El campo correo esta vacio'
             } else if (elemento.id == 'contrasena') {
-                document.getElementById('mensajeContrasena').innerHTML = '<br>La contraseña esta vacía'
+                document.getElementById('mensajeContrasena').innerHTML = '<br>LaEl campo contraseña esta vacio'
             }
             elemento.style.border = "1px red solid"
             bvalidacion = false
@@ -56,7 +56,7 @@ function validarCamposObligatorios() {
     return bandera
 }
 
-function valLetras(datos) {
+function validarLetras(datos) {
     var na = document.getElementById(datos.id).value
     if (datos.id == 'nombres') {
         var n = na.substr(na.length - 1).charCodeAt(0)
