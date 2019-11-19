@@ -1,3 +1,55 @@
+//Funcion para validar campos vacios
+function validarCamposObligatorios() {
+    // arreglos
+    var bandera = true
+    for (var i = 0; i < document.forms[0].elements.length; i++) {
+        var elemento = document.forms[0].elements[i]
+        if (elemento.value == '' && elemento.type == 'text') {
+            if (elemento.id == 'cedula') {
+                document.getElementById('mensajeCedula').innerHTML = '<br> La cedula no esta ingresada'
+            }else if (elemento.id == 'nombres') {
+                document.getElementById('mensajeNombres').innerHTML = '<br> Los nombres no estan ingresados'
+            }else if (elemento.id == 'apellidos') {
+                document.getElementById('mensajeApellidos').innerHTML = '<br> Los apellidos no estan ingresados'
+            }else if (elemento.id == 'direccion') {
+                document.getElementById('mensajeDireccion').innerHTML = '<br> La direccion no esta ingresada'
+            }else if (elemento.id == 'telefono') {
+                document.getElementById('mensajeTelefono').innerHTML = '<br> El telefono no estan ingresado'
+            }else if (elemento.id == 'fechaNacimiento') {
+                document.getElementById('mensajeFecha').innerHTML = '<br> El telefono no esta ingresado'
+            }else if (elemento.id == 'correo') {
+                document.getElementById('mensajeCorreo').innerHTML = '<br> El correo no esta ingresado'
+            }
+            elemento.style.border = '1px red solid'
+            bandera = false
+        }
+    }
+    if (!bandera) {
+        alert('Existen campos vacios')
+    }
+    return bandera
+}
+
+//Funcion para validar que los campos solo acepten letras
+function soloLetras(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toLowerCase();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
+    especiales = "8-37-39-46";
+
+    tecla_especial = false
+    for (var i in especiales) {
+        if (key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+    if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+        return false;
+    }
+}
+
+//Funcio para validar el numero de celdula del Ecuador
 function validarCedula() {
     var cad = document.getElementById("cedula").value;
     var total = 0;
@@ -28,36 +80,14 @@ function validarCedula() {
     }
 }
 
-function soloNumeros(e, c) {
-    var key = window.Event ? e.which : e.keyCode
-    return ((key >= 48) && (key <= 57) && (c.length + 1 <= 10) || (key == 8))
-}
-
-function soloLetras(e) {
-    key = e.keyCode || e.which;
-    tecla = String.fromCharCode(key).toLowerCase();
-    letras = " áéíóúabcdefghijklmnñopqrstuvwxyz";
-    especiales = "8-37-39-46";
-
-    tecla_especial = false
-    for (var i in especiales) {
-        if (key == especiales[i]) {
-            tecla_especial = true;
-            break;
-        }
-    }
-    if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-        return false;
-    }
-}
-
+//Funcion para validar que ingrese dos nombres y dos apellidos
 function dosNombres(txt, id) {
     palabras = txt.split(' ');
     if (palabras.length == 2) {
         p1 = palabras[0].trim();
         p2 = palabras[1].trim();
         if (p1 != '' && p2.length >= 2) {
-            document.getElementById(id).innerHTML=('Requerimientos CUmplidos');
+            document.getElementById(id).innerHTML=('Requerimientos Cumplidos');
         } else {
             document.getElementById(id).innerHTML=('Requerimientos no Cumplidos');
         }
@@ -66,15 +96,22 @@ function dosNombres(txt, id) {
     }
 }
 
+//Funcion que permita validar solo numeros
+function soloNumeros(e, c) {
+    var key = window.Event ? e.which : e.keyCode
+    return ((key >= 48) && (key <= 57) && (c.length + 1 <= 10) || (key == 8))
+}
+
+//Funcion par que lel numero telefonico acepte solo numeros y hasta 10 digitos
 function numeroTelefono(e) {
     var keynum = window.event ? window.event.keyCode : e.which;
     if ((keynum < 48) || (keynum >57)) {
 		document.getElementById("mensajeTelefono").innerHTML = ("Ingrese solo numeros ");
 		return true;
-		
 	}
 }
 
+//Funcion para validar el formato de la fecha
 function fecha(){
 	var Fecha = document.getElementById('fechaNacimiento').value;
     var Mensaje = '';
@@ -97,6 +134,7 @@ function fecha(){
     document.getElementById('mensajeFecha').innerHTML = Mensaje;
 }
 
+//Funcion para validar el correo institucionale de la universidad
 function correoU(txt) {
     f = txt.split('@');
     if (f.length >= 2) {
@@ -112,25 +150,4 @@ function correoU(txt) {
     } else {
         document.getElementById("mensajeCorreo").innerHTML = 'El correo no es correcto';
     }
-}
-
-
-
-function validarCamposObligatorios() {
-    // arreglos
-    var bandera = true
-    for (var i = 0; i < document.forms[0].elements.length; i++) {
-        var elemento = document.forms[0].elements[i]
-        if (elemento.value == '' && elemento.type == 'text') {
-            if (elemento.id == 'cedula') {
-                document.getElementById('mensajeCedula').innerHTML = '<br> La cedula no esta ingresada'
-            }
-            elemento.style.border = '1px red solid'
-            bandera = false
-        }
-    }
-    if (!bandera) {
-        alert('Existen campos vacios')
-    }
-    return bandera
 }
