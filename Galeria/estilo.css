@@ -1,0 +1,60 @@
+body { 
+    background-color: #050505 ;
+    border-style: inset;
+}
+  
+input,select{
+    padding: 4px;
+    width: 240px;
+    max-width: 100%;
+    font-size:1.2em;
+    margin-bottom: 10px;
+}
+  
+label {
+display: inline-block;
+width: 45%;
+}
+  
+body, input {
+    font-family: sans-serif;
+}
+  
+div{
+    width: max-content; height: 100%;
+    border: 10px double rgb(252, 252, 252);
+    margin: 0 auto;
+    background-color:black;   
+}
+    
+.boton1{
+    background-color: white;
+    color: black;
+    border-radius:5px 0 0 0;
+    width: 10%;
+    padding: 1%;
+}
+
+.boton2{
+    background-color: white; 
+    color: black; 
+    border-radius:5px 0 0 0;
+    width: 10%;
+    padding: 1%;
+  }
+
+.boton3{
+    background-color: white; 
+    color: black; 
+    border-radius:5px 0 0 0;
+    width: 10%;
+    padding: 1%;
+}
+  
+h1{
+    text-align: center;
+    color: white;
+
+}
+  
+  
